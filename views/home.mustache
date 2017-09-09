@@ -5,11 +5,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Hangman</title>
 </head>
 
 <body>
-    <h1>TEST</h1>
+    <div class="header">
+        <h1>Ready to play?</h1>
+        <form action="/game/newgame" method="get">
+            <button type="submit">Let's play!</button></form>
+    </div>
+
+    {{#word}}
+    <h2>{{#msg}}{{.}}{{/msg}}</h2>
+
+    <div class="game">
+        <form action="/game/guess" method="POST">
+
+            <input type="text" name="letter" pattern="[A-Za-z]{1}">
+            <button type="submit">Guess</button>
+
+        </form>
+    </div>
+
+    {{#turns}}
+    <div class="turns-counter"></div>
+    {{/turns}}
+
+    <div class="generated-word">
+        <h3>{{#display}}{{.}}{{/display}}</h3>
+    </div>
+
+
+    <div class="wrong-guesses">Wrong Guesses: {{#wrongGuesses}} {{.}} {{/wrongGuesses}} {{^wrongGuesses}} {{/wrongGuesses}}
+    </div>
+    <div class="right-guesses">Correct Guesses: {{#correctGuesses}} {{.}} {{/correctGuesses}} {{^correctGuesses}}{{/correctGuesses}}
+    </div>
+
+
+    {{/word}}
 </body>
 
 </html>

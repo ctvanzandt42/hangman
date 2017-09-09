@@ -1,0 +1,46 @@
+body {
+    background-image: url(http://www.prosportsbackgrounds.com/nba/assets/memphis_grizzlies_hardwood_wallpaper_logo_3.jpg);
+    margin: 0 auto;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.header, h2, .turns-counter, .game {
+    margin-top: 30px;
+    text-align: center;
+    color: #f5b012;
+}
+
+button {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 23px;
+    background-color: rgb(94, 118, 169);
+    color: #f5b012;
+}
+
+input {
+    background-color: rgb(94, 118, 169);
+    color: #f5b012;
+    font-size: 20px;
+}
+
+input::placeholder {
+    color: rgb(249, 244, 192);
+}
+
+.wrong-guesses, .right-guesses {
+    background-color: rgb(0, 40, 94);
+    text-align: center;
+    color: #f5b012;
+    font-size: 30px;
+    margin-right: 100px;
+    margin-left: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.generated-word {
+    text-align: center;
+    color: #f5b012;
+    font-size: 30px;
+    padding: 10px;
+}
