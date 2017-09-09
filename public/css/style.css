@@ -27,7 +27,7 @@ input::placeholder {
     color: rgb(249, 244, 192);
 }
 
-.wrong-guesses, .right-guesses {
+.wrong-guesses, .right-guesses, .generated-word {
     background-color: rgb(0, 40, 94);
     text-align: center;
     color: #f5b012;
@@ -36,11 +36,4 @@ input::placeholder {
     margin-left: 100px;
     padding-top: 20px;
     padding-bottom: 20px;
-}
-
-.generated-word {
-    text-align: center;
-    color: #f5b012;
-    font-size: 30px;
-    padding: 10px;
 }

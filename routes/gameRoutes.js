@@ -20,16 +20,16 @@ gameRoutes.get("/newgame", (req, res) => {
     req.session.turns = 8;
     req.session.playing = true;
     req.session.msg = `Guess a letter!`;
-    res.redirect("/");
+    res.redirect('/');
 });
 
-gameRoutes.post("/guess", (req, res) => {
+gameRoutes.post('/guess', (req, res) => {
     let guessLetter = req.body.letter.toUpperCase();
     let word = req.session.word;
     console.log(word);
 
     if ((req.session.playing = false)) {
-        return res.redirect("/");
+        return res.redirect('/');
     }
 
     if (
@@ -37,18 +37,23 @@ gameRoutes.post("/guess", (req, res) => {
         req.session.correctGuesses.indexOf(guessLetter) > -1
     ) {
         req.session.msg = `Already guessed!`;
-        return res.redirect("/");
+        return res.redirect('/');
     } else if (word.indexOf(guessLetter) < 0) {
         req.session.turns--;
         if (req.session.turns < 1) {
             req.session.playing = false;
             req.session.msg =
                 `Sorry! The word was ${req.session.word}! You suck! Click the button above to play again!`;
-            return res.redirect("/");
+            return res.redirect('/');
+        } else if (req.session.turns === 1) {
+            req.session.msg =
+                `Sorry, guess again! Only ${req.session.turns} turn left!!!!`
+            req.session.wrongGuesses.push(guessLetter);
+            return res.redirect('/');
         } else {
             req.session.msg = `Sorry, guess again! ${req.session.turns} turns left!`;
             req.session.wrongGuesses.push(guessLetter);
-            return res.redirect("/");
+            return res.redirect('/');
         }
     } else
         for (let i = 0; i < word.length; i++) {
