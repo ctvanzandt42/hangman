@@ -43,7 +43,7 @@ gameRoutes.post('/guess', (req, res) => {
         if (req.session.turns < 1) {
             req.session.playing = false;
             req.session.msg =
-                `Sorry! The word was ${req.session.word}! You suck! Click the button above to play again!`;
+                `Sorry! The word was ${req.session.word}! Click the button above to play again!`;
             return res.redirect('/');
         } else if (req.session.turns === 1) {
             req.session.msg =
