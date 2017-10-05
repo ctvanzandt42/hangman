@@ -26,7 +26,7 @@ gameRoutes.get("/newgame", (req, res) => {
 gameRoutes.post('/guess', (req, res) => {
     let guessLetter = req.body.letter.toUpperCase();
     let word = req.session.word;
-    console.log(word);
+    console.log("The word is: " + word);
 
     if ((req.session.playing = false)) {
         return res.redirect('/');
@@ -45,11 +45,11 @@ gameRoutes.post('/guess', (req, res) => {
             req.session.msg =
                 `Sorry! The word was ${req.session.word}! Click the button above to play again!`;
             return res.redirect('/');
-        } else if (req.session.turns === 1) {
-            req.session.msg =
-                `Sorry, guess again! Only ${req.session.turns} turn left!!!!`
-            req.session.wrongGuesses.push(guessLetter);
-            return res.redirect('/');
+            } else if (req.session.turns === 1) {
+                req.session.msg =
+                    `Sorry, guess again! Only ${req.session.turns} turn left!!!!`
+                req.session.wrongGuesses.push(guessLetter);
+                return res.redirect('/');
         } else {
             req.session.msg = `Sorry, guess again! ${req.session.turns} turns left!`;
             req.session.wrongGuesses.push(guessLetter);
